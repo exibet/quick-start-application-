@@ -1,0 +1,14 @@
+/* 
+    Document   : main.css
+    Created on : 01.06.2013, 6:07:05
+    Author     : Artur
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+h2 {
+    color: blueviolet;
+}

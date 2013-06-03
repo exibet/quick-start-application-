@@ -1,0 +1,62 @@
+<?php if (count($this->users)): ?>
+    <table border="1" style="border: 1px solid #000">
+        <thead>
+            <tr>
+                <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">ID</th>
+                <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Логин</th>
+                <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Email</th>
+                <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Имя</th>
+                <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Фамилия</th>
+                <th style="border-bottom: 1px solid #000; text-align: center">Редактирование</th>
+            </tr>
+        </thead>
+        <?php foreach ($this->users as $user): ?>
+            <tr>
+                <td style="border-right: 1px solid #000; text-align: center"><?php echo $user->id; ?></td>
+                <td style="border-right: 1px solid #000">
+                    <a  href="<?php
+                    echo $this->url(array(
+                        'controller' => 'users',
+                        'action' => 'view',
+                        'id' => $user->id
+                    ));
+                    ?>"><?php echo $user->username; ?></a>
+                </td>
+                <td style="border-right: 1px solid #000"><?php echo $user->email; ?></td>
+                <td style="border-right: 1px solid #000"><?php echo $user->name; ?></td>
+                <td style="border-right: 1px solid #000"><?php echo $user->surname; ?></td>
+                <td style="text-align: center;">
+                    <a style="padding: 2px" href="<?php
+                    echo $this->url(array(
+                        'controller' => 'users',
+                        'action' => 'edit',
+                        'id' => $user->id
+                    ));
+                    ?>">Изменить</a>
+
+                    <a style="padding: 2px" href="<?php
+                       echo $this->url(array(
+                           'controller' => 'users',
+                           'action' => 'delete',
+                           'id' => $user->id
+                       ));
+                       ?>"> Удалить</a>
+                </td>
+            </tr>
+
+        <?php endforeach ?>
+
+    </table>
+
+<?php else: ?>
+    <p> Польказователей пока нет. </p>
+
+<?php endif ?>
+
+
+<a href = "<?php
+echo $this->url(array(
+    'controller' => 'users',
+    'action' => 'add',
+));
+?>"> <input type="submit" value="Добавить пользователя" name="adduser" /> </a>

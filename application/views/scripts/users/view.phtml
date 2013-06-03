@@ -1,0 +1,41 @@
+<h2><?php echo 'Профиль ' . $this->user->username; ?></h2>
+<table border="1" style="border: 1px solid #000">
+    <thead>
+        <tr>
+            <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">ID</th>
+            <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Логин</th>
+            <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Email</th>
+            <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Имя</th>
+            <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Фамилия</th>
+            <th style="border-bottom: 1px solid #000; text-align: center">Редактировать</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border-right: 1px solid #000; text-align: center"><?php echo $this->user->id; ?></td>
+            <td style="border-right: 1px solid #000"><?php echo $this->user->username; ?></td>
+            <td style="border-right: 1px solid #000"><?php echo $this->user->email; ?></td>
+            <td style="border-right: 1px solid #000"><?php echo $this->user->name; ?></td>
+            <td style="border-right: 1px solid #000"><?php echo $this->user->surname; ?></td>
+            <td style="text-align: center;">
+                    <a style="padding: 2px" href="<?php
+                    echo $this->url(array(
+                        'controller' => 'users',
+                        'action' => 'edit'
+                        
+                    ));
+                    ?>">Изменить</a>
+
+                    <a style="padding: 2px" href="<?php
+                       echo $this->url(array(
+                           'controller' => 'users',
+                           'action' => 'delete'
+                           
+                       ));
+                       ?>"> Удалить</a>
+                </td>
+        </tr>
+    </tbody>
+</table>
+
+
