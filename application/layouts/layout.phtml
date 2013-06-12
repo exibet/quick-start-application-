@@ -24,20 +24,41 @@
 
 
     </head>
-    <body>
-        <div class="container" style="background-color: #dff4ff">
-            <div id="header" class="span-24 last">
-                <h2><?php echo $this->title; ?></h2>
+    <div id="wrapper">
+
+        <header id="header">
+            <h3>Quick-Start</h3>
+        </header>
+        <div id="bar"><h4><?php echo $this->title; ?></h4></div>
+
+        <section id="middle">
+ 
+            <div id="container">
+                <div id="content">
+                    <?php echo $this->layout()->content; ?>
+                </div>
+
+
             </div>
-            <div id="content" class="span-17 colborder">
-                <?php echo $this->layout()->content; ?>
-            </div>
-            <div id="sidebar" class="span-6 last" >
-                <p>Освоение Zend framework</p>
-            </div>
-            <div id="footer" class="span-24 last">
-                <br />
-            </div> 
-        </div>
-    </body>
+
+            <aside id="sideLeft">
+                <h3>Меню</h3> 
+                <?php if ($this->identity): ?>
+                    <h4>Вы зашли как <?php echo $this->identity->username; ?></h4>
+                    
+                <?php else: ?>
+                    <p><?php echo $this->error ?></p>
+                    <?php echo $this->form; ?>
+                    <p><a href="<?php echo $this->url(array('controller' => 'users',
+                        'action' => 'registration')); ?>">Регистрация</a></p>
+                <?php endif ?>
+
+
+            </aside>
+
+        </section>
+
+    </div>
+    <div id="footer" align="center">
+        <strong>Footer:</strong> </div>
 </html>

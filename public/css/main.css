@@ -12,3 +12,8 @@ root {
 h2 {
     color: blueviolet;
 }
+#login{
+    border: 1px solid red;
+     width: 210px; 
+     padding-left: 10px
+}

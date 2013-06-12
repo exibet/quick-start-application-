@@ -1,10 +1,12 @@
-<?php if (count($this->users)): ?>
+<?php echo $this->form; ?>
+    <?php if (count($this->users)): ?>
     <table border="1" style="border: 1px solid #000">
         <thead>
             <tr>
                 <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">ID</th>
                 <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Логин</th>
                 <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Email</th>
+                <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Активация</th>
                 <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Имя</th>
                 <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Фамилия</th>
                 <th style="border-bottom: 1px solid #000; text-align: center">Редактирование</th>
@@ -23,6 +25,7 @@
                     ?>"><?php echo $user->username; ?></a>
                 </td>
                 <td style="border-right: 1px solid #000"><?php echo $user->email; ?></td>
+                <td style="border-right: 1px solid #000"><?php echo $user->activated; ?></td>
                 <td style="border-right: 1px solid #000"><?php echo $user->name; ?></td>
                 <td style="border-right: 1px solid #000"><?php echo $user->surname; ?></td>
                 <td style="text-align: center;">

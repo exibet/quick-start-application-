@@ -1,29 +1,37 @@
 <?php
 
-/**
- * 
- */
-class Application_Form_User extends Zend_Form {
+class Application_Form_Registration extends Zend_Form {
 
     public function init() {
-        $this->setName('form_user');
+        $this->setName('form_registration');
 
         $username = new Zend_Form_Element_Text('username');
         $username->setLabel('Логин')
                 ->setRequired(TRUE)
                 ->addValidator('NotEmpty')
                 ->addValidator('Alnum')
+                /*->addValidator('Db_NoRecordExists', FALSE, array(
+                    'table' => 'users',
+                    'field' => 'username'
+                ))*/
                 ->addFilter('StringTrim')
                 ->addFilter('StripTags');
 
         $password = new Zend_Form_Element_Password('password');
         $password->setLabel('Пароль')
                 ->setRequired(TRUE)
-                ->addValidator('Alnum')
-                ->addFilter('StringTrim')
                 ->addFilter('StripTags')
                 ->addValidator('NotEmpty');
+
         
+        $password_confirm = new Zend_Form_Element_Password('password_confirm');
+        $password_confirm->setLabel('Подтвирждение пароля')
+                ->setRequired(TRUE)
+                ->addFilter('StripTags')
+                ->addValidator('NotEmpty')
+                ->addValidator('identical', false, array('token' => 'password'));
+
+
 
         $email = new Zend_Form_Element_Text('email');
         $email->setLabel('Email')
@@ -47,8 +55,9 @@ class Application_Form_User extends Zend_Form {
 
         $submit = new Zend_Form_Element_submit('Подтвердить');
 
-        $this->addElements(array($username, $password, $email, $name, $surname, $submit,));
+        $this->addElements(array($username, $password, $password_confirm, $email, $name, $surname, $submit,));
     }
 
 }
 
+?>

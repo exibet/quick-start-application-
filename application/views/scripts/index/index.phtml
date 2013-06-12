@@ -1,3 +1,59 @@
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <?php if (count($this->users)): ?>
+    <table border="1" style="border: 1px solid #000">
+        <thead>
+            <tr>
+                <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">ID</th>
+                <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Логин</th>
+                <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Email</th>
+                <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Активация</th>
+                <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Имя</th>
+                <th style="border-bottom: 1px solid #000; border-right: 1px solid #000; text-align: center">Фамилия</th>
+                <th style="border-bottom: 1px solid #000; text-align: center">Редактирование</th>
+            </tr>
+        </thead>
+        <?php foreach ($this->users as $user): ?>
+            <tr>
+                <td style="border-right: 1px solid #000; text-align: center"><?php echo $user->id; ?></td>
+                <td style="border-right: 1px solid #000">
+                    <a  href="<?php
+                    echo $this->url(array(
+                        'controller' => 'users',
+                        'action' => 'view',
+                        'id' => $user->id
+                    ));
+                    ?>"><?php echo $user->username; ?></a>
+                </td>
+                <td style="border-right: 1px solid #000"><?php echo $user->email; ?></td>
+                <td style="border-right: 1px solid #000"><?php echo $user->activated; ?></td>
+                <td style="border-right: 1px solid #000"><?php echo $user->name; ?></td>
+                <td style="border-right: 1px solid #000"><?php echo $user->surname; ?></td>
+                <td style="text-align: center;">
+                    <a style="padding: 2px" href="<?php
+                    echo $this->url(array(
+                        'controller' => 'users',
+                        'action' => 'edit',
+                        'id' => $user->id
+                    ));
+                    ?>">Изменить</a>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <a style="padding: 2px" href="<?php
+                       echo $this->url(array(
+                           'controller' => 'users',
+                           'action' => 'delete',
+                           'id' => $user->id
+                       ));
+                       ?>"> Удалить</a>
+                </td>
+            </tr>
+
+        <?php endforeach ?>
+
+    </table>
+
+<?php else: ?>
+    <p> Польказователей пока нет. </p>
+
+<?php endif ?>
+
+
+
